@@ -29,3 +29,14 @@ python monte_carlo_option.py \
 - `--seed`: 난수 시드.
 
 출력은 할인된 옵션 가격 추정치와 표준 오차입니다.
+
+## 웹 인터페이스 실행
+
+간단한 Flask 웹 서버를 통해 브라우저에서 바로 옵션 가격을 시뮬레이션할 수 있습니다.
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+기본적으로 `http://localhost:5000` 에서 접속할 수 있으며, 폼에 파라미터와 페이오프 함수를 입력하여 즉시 결과를 확인할 수 있습니다.
