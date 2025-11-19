@@ -128,6 +128,34 @@ def price_option(args: argparse.Namespace) -> Dict[str, float]:
     return {"price": mean_price, "stderr": stderr}
 
 
+def price_option_from_params(
+    *,
+    s0: float,
+    r: float,
+    sigma: float,
+    t: float,
+    payoff: str,
+    steps: int = 1,
+    paths: int = 10000,
+    seed: int | None = None,
+    k: float | None = None,
+) -> Dict[str, float]:
+    """Helper wrapper so other modules (like the web app) can reuse pricing logic."""
+
+    args = argparse.Namespace(
+        s0=s0,
+        r=r,
+        sigma=sigma,
+        t=t,
+        steps=steps,
+        paths=paths,
+        payoff=payoff,
+        seed=seed,
+        k=k,
+    )
+    return price_option(args)
+
+
 def main() -> None:
     args = parse_arguments()
     result = price_option(args)
